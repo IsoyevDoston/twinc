@@ -36,9 +36,12 @@ export default function DriverApply() {
   const [form, setForm] = useState({
     firstName: "", lastName: "", phone: "", email: "",
     cdlClass: "", experience: "", endorsements: "", violations: "", message: "",
+    smsConsent: false,
   });
-  const hc = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  const hc = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    setForm((f) => ({ ...f, [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value }));
+  };
 
   return (
     <div id="drivers">
@@ -228,6 +231,23 @@ export default function DriverApply() {
                 <textarea name="message" value={form.message} onChange={hc} rows={3}
                   placeholder="Preferred routes, home time needs…" className="field" style={{ resize: "vertical" }} />
               </div>
+              {/* SMS Opt-in */}
+              <label className="flex gap-3 items-start cursor-pointer mt-1">
+                <input
+                  type="checkbox"
+                  name="smsConsent"
+                  checked={form.smsConsent}
+                  onChange={hc}
+                  className="mt-0.5 flex-shrink-0"
+                  style={{ accentColor: "var(--orange)", width: 15, height: 15 }}
+                />
+                <span className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                  I consent to receive text messages (account notifications, dispatch updates,
+                  delivery alerts) from TW INC Transportation LLC at the phone number above.
+                  Msg &amp; Data rates may apply. Reply STOP to opt out. View our{" "}
+                  <a href="/privacy" style={{ color: "var(--navy-700)", textDecoration: "underline" }}>Privacy Policy</a>.
+                </span>
+              </label>
               <button type="submit" className="btn-navy w-full justify-center mt-1" style={{ padding: "13px 28px" }}>
                 Submit Application <ArrowRight size={16} />
               </button>
