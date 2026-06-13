@@ -12,6 +12,8 @@ const cols = [
     { label: "About Us",         href: "#about" },
     { label: "Our Fleet",        href: "#fleet" },
     { label: "Drive With Us",    href: "#drivers" },
+    { label: "Privacy Policy",   href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
     { label: "FMCSA Lookup",     href: "https://safer.fmcsa.dot.gov/query.asp?query_type=queryCarrierSnapshot&query_param=USDOT&query_string=3860157" },
   ]},
   { title: "Drivers", links: [
@@ -131,16 +133,19 @@ export default function Footer() {
             © 2024 TW INC · 128 S Tryon St, 19th Floor, Charlotte, NC 28202
           </span>
           <div className="flex gap-5">
-            {["Privacy Policy", "Terms"].map((l) => (
+            {[
+              { label: "Privacy Policy", href: "/privacy" },
+              { label: "Terms of Service", href: "/terms" },
+            ].map((l) => (
               <a
-                key={l}
-                href="#"
+                key={l.label}
+                href={l.href}
                 className="text-xs transition-colors"
                 style={{ color: "rgba(255,255,255,0.2)" }}
                 onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.55)")}
                 onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.2)")}
               >
-                {l}
+                {l.label}
               </a>
             ))}
           </div>
