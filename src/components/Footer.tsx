@@ -12,6 +12,7 @@ const cols = [
     { label: "About Us",         href: "#about" },
     { label: "Our Fleet",        href: "#fleet" },
     { label: "Drive With Us",    href: "#drivers" },
+    { label: "Contact Us",       href: "/contact" },
     { label: "Privacy Policy",   href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },
     { label: "FMCSA Lookup",     href: "https://safer.fmcsa.dot.gov/query.asp?query_type=queryCarrierSnapshot&query_param=USDOT&query_string=3860157" },

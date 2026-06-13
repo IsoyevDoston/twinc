@@ -9,6 +9,7 @@ const links = [
   { label: "Our Fleet",     href: "#fleet" },
   { label: "For Brokers",   href: "#brokers" },
   { label: "Drive With Us", href: "#drivers" },
+  { label: "Contact",       href: "/contact" },
 ];
 
 export default function Navbar() {
